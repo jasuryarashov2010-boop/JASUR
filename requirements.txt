@@ -3,3 +3,7 @@ pandas
 openpyxl
 aiohttp
 Flask
+aiogram
+aiohttp
+pandas
+openpyxl
