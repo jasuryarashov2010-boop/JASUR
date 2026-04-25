@@ -1,6 +1,6 @@
 import asyncio, logging, sqlite3, re, os, threading
 import pandas as pd
-from aiohttp import web # Uyg'oq turish uchun
+from aiohttp import web 
 from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters import Command
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton, FSInputFile
@@ -8,15 +8,16 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.storage.memory import MemoryStorage
 
-# --- UYG'OQ TUTISH UCHUN VEB-SERVER ---
+# --- UYG'OQ TUTISH UCHUN VEB-SERVER (RENDER UCHUN TO'G'IRLANDI) ---
 async def handle(request):
     return web.Response(text="Bot is live and running!")
 
 def run_web_server():
     app = web.Application()
     app.router.add_get('/', handle)
-    # Render portni avtomat beradi, biz 8080 ishlatamiz
-    web.run_app(app, host='0.0.0.0', port=8080)
+    # Render portni 'PORT' o'zgaruvchisi orqali beradi, agar bo'lmasa 8080 ishlatadi
+    port = int(os.environ.get("PORT", 8080))
+    web.run_app(app, host='0.0.0.0', port=port)
 
 # --- SOZLAMALAR ---
 TOKEN = "8787202401:AAG7xJkTycIavNpbqJfvHE-S2QdxH-ushRg"
@@ -258,7 +259,7 @@ async def profile(message: types.Message):
     await message.answer(text, parse_mode="Markdown")
 
 async def main():
-    # Veb-serverni alohida oqimda ishga tushirish
+    # Veb-serverni alohida oqimda ishga tushirish (Render uchun)
     threading.Thread(target=run_web_server, daemon=True).start()
     
     init_db()
