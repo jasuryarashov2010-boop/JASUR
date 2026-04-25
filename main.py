@@ -10,8 +10,8 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from groq import Groq
 
 # --- KONFIGURATSIYA ---
-TOKEN = "8787202401:AAFjQIkQrvKiZisdQwd27CuPC3Q7OwCHi3s"
-GROQ_API_KEY = "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"
+TOKEN = "8787202401:AAFjQsaIkQrvKiZisdQwd27CuPC3Q7OwCHi3s"
+GROQ_API_KEY = "gsk_0RLam5dfr9e1CBqFBf0SWWGdyb3FYyHlYJ7LexVgHazACm8dznX71"
 ADMIN_ID = 8588645504
 
 logging.basicConfig(level=logging.INFO)
